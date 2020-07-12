@@ -45,8 +45,7 @@ public class ConsoleScript : MonoBehaviour
 
     [SerializeField] private Question[] scriptQuestions;
 
-    [Button(ButtonStyle.Box, Name = "StartScript")]
-    private void StartScript()
+    private void Start()
     {
         StartCoroutine(WriteScript());
     }

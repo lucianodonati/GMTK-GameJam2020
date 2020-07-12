@@ -9,32 +9,6 @@ public class GameManager : MonoBehaviour
     [SerializeField, HideInInspector]
     private AudioSource audioSource = null;
 
-    #region Stages
-
-    private enum Stages
-    {
-        Pre,
-        IntroGame,
-        Late,
-        Console,
-        LENGHT,
-        INVALID
-    }
-
-    [ShowInInspector, ReadOnly]
-    private Stages currentStage = Stages.INVALID;
-
-    [ShowInInspector, ReadOnly]
-    private float stageTime;
-
-    [ShowInInspector, ReadOnly]
-    private bool gameStarted = false;
-
-    [SerializeField]
-    private float[] timers = new float [(int) Stages.LENGHT];
-
-    #endregion
-
     #region BSOD
 
     [SerializeField]
@@ -51,8 +25,19 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    private FileCreator fileCreator = new FileCreator();
+    [SerializeField]
+    private GameObject[] moveMe = null;
 
+    [SerializeField]
+    private int partsToPhoneSpy = 3;
+
+    [SerializeField]
+    private int partsToConsole = 3;
+
+    [SerializeField]
+    private GameObject console = null;
+
+    private FileCreator fileCreator = new FileCreator();
 
     private void OnValidate()
     {
@@ -60,70 +45,66 @@ public class GameManager : MonoBehaviour
             audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
-    {
-        if (Application.isPlaying && !Application.isEditor)
-            CreateKeyCombinationFiles(filesToCreate);
-    }
-
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetMouseButtonDown(0))
+        {
+            foreach (var trans in moveMe)
+                trans.transform.position += Vector3.right * .001f;
+        }
+    }
+
+    public void ProgressPhoneSpy()
+    {
+        var progress = PlayerPrefs.GetInt("SpyProgress", 0) + 1;
+        PlayerPrefs.SetInt("SpyProgress", progress);
+        ProgressToPhoneSpy(progress);
+    }
+
+    public void ProgressConsole()
+    {
+        var progress = PlayerPrefs.GetInt("ConsoleProgress", 0) + 1;
+        PlayerPrefs.SetInt("ConsoleProgress", progress);
+        ProgressToConsole(progress);
+    }
+
+    private void ProgressToPhoneSpy(int currentProgress)
+    {
+        if (currentProgress >= partsToPhoneSpy)
         {
             QuitAndAcknowledge();
         }
+    }
 
-        if (currentStage != Stages.Console)
+    private void ProgressToConsole(int currentProgress)
+    {
+        if (currentProgress >= partsToConsole)
         {
-            if (Input.GetKeyDown(KeyCode.Q) && Input.GetKeyDown(KeyCode.Z) &&
-                Input.GetKeyDown(KeyCode.P) && Input.GetKeyDown(KeyCode.M))
-            {
-                currentStage = Stages.Console;
-            }
-        }
-
-        if (gameStarted)
-        {
-            timers[(int) currentStage] += Time.deltaTime;
-
-            if (timers[(int) currentStage] >= stageTime)
-            {
-                //Helper();
-            }
+            StartCoroutine(EnableConsoleRoutine());
         }
     }
 
-    private void StartGame()
-    {
-        currentStage = 0;
-        stageTime = 10f;
-        gameStarted = true;
-    }
-
-    private void StartMediumStage()
-    {
-    }
-
-    private void StartLateStage()
-    {
-    }
-
-    private void StartEndStage()
-    {
-    }
-
-    [Button]
     private void QuitAndAcknowledge()
     {
-        if (Application.isPlaying && !Application.isEditor)
-            StartCoroutine(BSODRoutine());
+        if (PlayerPrefs.GetInt("HasCrashed", 0) == 0)
+        {
+            if (Application.isPlaying && !Application.isEditor)
+                StartCoroutine(BSODRoutine());
+        }
+    }
+
+    IEnumerator EnableConsoleRoutine()
+    {
+        yield return new WaitForSeconds(16);
+        console.SetActive(true);
     }
 
     IEnumerator BSODRoutine()
     {
+        yield return new WaitForSeconds(15);
         BSOD.SetActive(true);
         audioSource.PlayOneShot(BSOD_Clip, 1);
-        //PlayerPrefs.SetInt("HasCrashed", 1);
+        PlayerPrefs.SetInt("HasCrashed", 1);
         CreateKeyCombinationFiles(filesToCreate);
 
         yield return new WaitForSeconds(timeToQuit);
@@ -134,6 +115,6 @@ public class GameManager : MonoBehaviour
     private void CreateKeyCombinationFiles(int howMany)
     {
         for (int i = 0; i < howMany; i++)
-            fileCreator.CreateTxtFile($"KEY_CODE{i + 1}", "Input Key Combination: Q+Z+M+P");
+            fileCreator.CreateTxtFile($"KEY_CODE{i + 1}", "Password: mateo71516");
     }
 }

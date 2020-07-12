@@ -6,11 +6,17 @@ using Random = UnityEngine.Random;
 
 public class RandomSounds : MonoBehaviour
 {
-    [SerializeField] private AudioClip[] audios;
-    [SerializeField] private AudioSource source;
+    [SerializeField]
+    private AudioClip[] audios;
 
-    [SerializeField] private Vector2 timer;
-    [SerializeField] List<AudioClip> audiosList = new List<AudioClip>();
+    [SerializeField]
+    private AudioSource source;
+
+    [SerializeField]
+    private Vector2 timer;
+
+    [SerializeField]
+    List<AudioClip> audiosList = new List<AudioClip>();
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +35,7 @@ public class RandomSounds : MonoBehaviour
         {
             audiosList.Add(audio);
         }
+
         StopCoroutine(PlayRandomSounds());
         StartCoroutine(PlayRandomSounds());
     }
@@ -44,9 +51,11 @@ public class RandomSounds : MonoBehaviour
                 source.clip = audiosList[audioIndex];
                 source.Play();
                 audiosList.Remove(audiosList[audioIndex]);
-                yield return new WaitForSeconds(Random.Range(timer.x, timer.y));
             }
+
+            yield return null;
         }
+
         if (audiosList.Count <= 0)
         {
             ResetPlayList();
