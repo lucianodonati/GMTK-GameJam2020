@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         Pre,
         IntroGame,
         Late,
-        End,
+        Console,
         LENGHT,
         INVALID
     }
@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
     private GameObject BSOD = null;
 
     [SerializeField]
+    private int filesToCreate = 10;
+
+    [SerializeField]
     private float timeToQuit = 8;
 
     [SerializeField]
@@ -60,7 +63,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         if (Application.isPlaying && !Application.isEditor)
-            CreateKeyCombinationFiles(5);
+            CreateKeyCombinationFiles(filesToCreate);
     }
 
     private void Update()
@@ -68,6 +71,15 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             QuitAndAcknowledge();
+        }
+
+        if (currentStage != Stages.Console)
+        {
+            if (Input.GetKeyDown(KeyCode.Q) && Input.GetKeyDown(KeyCode.Z) &&
+                Input.GetKeyDown(KeyCode.P) && Input.GetKeyDown(KeyCode.M))
+            {
+                currentStage = Stages.Console;
+            }
         }
 
         if (gameStarted)
@@ -112,7 +124,7 @@ public class GameManager : MonoBehaviour
         BSOD.SetActive(true);
         //audioSource.PlayOneShot(BSOD_Clip, 1);
         //PlayerPrefs.SetInt("HasCrashed", 1);
-        CreateKeyCombinationFiles(5);
+        CreateKeyCombinationFiles(filesToCreate);
 
         yield return new WaitForSeconds(1);
 
@@ -122,6 +134,6 @@ public class GameManager : MonoBehaviour
     private void CreateKeyCombinationFiles(int howMany)
     {
         for (int i = 0; i < howMany; i++)
-            fileCreator.CreateTxtFile($"key{i + 1}", "K+T+M+G :noitanibmoC yeK");
+            fileCreator.CreateTxtFile($"KEY_CODE{i + 1}", "Input Key Combination: Q+Z+M+P");
     }
 }
