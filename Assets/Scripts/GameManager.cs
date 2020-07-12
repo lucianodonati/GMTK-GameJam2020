@@ -1,42 +1,73 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
 {
+    [SerializeField, HideInInspector]
+    private AudioSource audioSource = null;
+
+    #region Stages
+
     private enum Stages
     {
-        Intro,
-        Medium,
+        Pre,
+        IntroGame,
         Late,
         End,
         LENGHT,
         INVALID
     }
 
-    private Stages currentStage;
+    [ShowInInspector, ReadOnly]
+    private Stages currentStage = Stages.INVALID;
 
+    [ShowInInspector, ReadOnly]
     private float stageTime;
-    [SerializeField]private float[] timers;
 
-
+    [ShowInInspector, ReadOnly]
     private bool gameStarted = false;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float[] timers = new float [(int) Stages.LENGHT];
+
+    #endregion
+
+    #region BSOD
+
+    [SerializeField]
+    private GameObject BSOD = null;
+
+    [SerializeField]
+    private float timeToQuit = 8;
+
+    [SerializeField]
+    private AudioClip BSOD_Clip = null;
+
+    #endregion
+
+    private FileCreator fileCreator = new FileCreator();
+
+
+    private void OnValidate()
     {
-        timers = new float [(int) Stages.LENGHT];
-        currentStage = Stages.INVALID;
+        if (null == audioSource)
+            audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        //This will be replaced by the real way to Start the game.
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Application.isPlaying && !Application.isEditor)
+            CreateKeyCombinationFiles(5);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            StartGame();
+            QuitAndAcknowledge();
         }
 
         if (gameStarted)
@@ -52,26 +83,45 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
-        currentStage = Stages.Intro;
+        currentStage = 0;
         stageTime = 10f;
         gameStarted = true;
     }
 
     private void StartMediumStage()
     {
-        currentStage = Stages.Medium;
-        stageTime = 20f;
     }
 
     private void StartLateStage()
     {
-        currentStage = Stages.Late;
-        stageTime = 0f;
     }
 
     private void StartEndStage()
     {
-        currentStage = Stages.End;
-        stageTime = 0f;
+    }
+
+    [Button]
+    private void QuitAndAcknowledge()
+    {
+        if (Application.isPlaying && !Application.isEditor)
+            StartCoroutine(BSODRoutine());
+    }
+
+    IEnumerator BSODRoutine()
+    {
+        BSOD.SetActive(true);
+        //audioSource.PlayOneShot(BSOD_Clip, 1);
+        //PlayerPrefs.SetInt("HasCrashed", 1);
+        CreateKeyCombinationFiles(5);
+
+        yield return new WaitForSeconds(1);
+
+        Application.Quit();
+    }
+
+    private void CreateKeyCombinationFiles(int howMany)
+    {
+        for (int i = 0; i < howMany; i++)
+            fileCreator.CreateTxtFile($"key{i + 1}", "K+T+M+G :noitanibmoC yeK");
     }
 }
