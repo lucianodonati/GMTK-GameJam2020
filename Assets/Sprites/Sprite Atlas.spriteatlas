@@ -1,0 +1,161 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 2
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: aa350621b824a5f4381d8f1dc33af158, type: 3}
+    - {fileID: 102900000, guid: fa34b106e520e714f9b44239bbc3b377, type: 3}
+    - {fileID: 102900000, guid: 4bc2b72f264df7f4da4b524b88a0ae6e, type: 3}
+    - {fileID: 102900000, guid: 9f136eb14a9747647a080a60ca3a43d8, type: 3}
+    totalSpriteSurfaceArea: 111850909
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: fb4502209e40ec54e8ec7b286d9afc73, type: 3}
+  - {fileID: 21300000, guid: 91a8e260c9487b846b2eb465d79009db, type: 3}
+  - {fileID: 21300000, guid: d3b295a04cde0fa4a9720bc39b32df9c, type: 3}
+  - {fileID: 21300000, guid: 821a1dc095daec7418331750ebf8d780, type: 3}
+  - {fileID: 21300000, guid: 0972fbd0be901b24699aa3ed2fed190a, type: 3}
+  - {fileID: 21300000, guid: 177faae05e51aa746bde6f506b5fd319, type: 3}
+  - {fileID: 21300000, guid: 13325531a87a83e4fb33548beb68ee60, type: 3}
+  - {fileID: 21300000, guid: f2a14fb1ca5f0ad439c484a48072b6f9, type: 3}
+  - {fileID: 21300000, guid: 762ba642becd27f4b98fa53568e43e50, type: 3}
+  - {fileID: 21300000, guid: 1d3089c2012a378419b8379514132939, type: 3}
+  - {fileID: 21300000, guid: b6a0f19393a5a884a82fad232dae721c, type: 3}
+  - {fileID: 21300000, guid: 01b5a44451df8b148840e3cfac7f64c8, type: 3}
+  - {fileID: 21300000, guid: 4db2ca64bea779d438138248042c3e18, type: 3}
+  - {fileID: 21300000, guid: f0ceb57437ed5684ba44253d9fd28390, type: 3}
+  - {fileID: 21300000, guid: 6b98aca59ffd1aa459df858603c3d057, type: 3}
+  - {fileID: 21300000, guid: 7f5710b51700b8c4dbaea35311e2e342, type: 3}
+  - {fileID: 21300000, guid: f9d058e548c5e2a4cb3953ce105f5f65, type: 3}
+  - {fileID: 21300000, guid: dfb7c016730b8cf408dbb07c9a58946b, type: 3}
+  - {fileID: 21300000, guid: ff900f1669d55f440a4b3d7710f055bd, type: 3}
+  - {fileID: 21300000, guid: 5bc4d146ac12f8f4cbc084b17f4aeba0, type: 3}
+  - {fileID: 21300000, guid: 885bf356a51b8cc4aafb892c1c76bccc, type: 3}
+  - {fileID: 21300000, guid: 6595128645b9cf94ea4e588a2f2ddcf8, type: 3}
+  - {fileID: 21300000, guid: 5bc703b677c5f2a4d889f6f407fb9a03, type: 3}
+  - {fileID: 21300000, guid: d17b22c67a55dfb41bcdd79468ca9260, type: 3}
+  - {fileID: 21300000, guid: a221d5c6e78d345409ce85b38d518472, type: 3}
+  - {fileID: 21300000, guid: f20d3a6826356c340a00766d94dbc2f0, type: 3}
+  - {fileID: 21300000, guid: ebe769783219a7f4186aab98cbe2c566, type: 3}
+  - {fileID: 21300000, guid: 46524629a38a5474c8ce6b9f9d018a9b, type: 3}
+  - {fileID: 21300000, guid: e606d669cfc66764694276c1fe719dbc, type: 3}
+  - {fileID: 21300000, guid: 9da4aec96ba6502478b37f6b500bd876, type: 3}
+  - {fileID: 21300000, guid: d5aa031aa92f6924dac31c057734b76d, type: 3}
+  - {fileID: 21300000, guid: ac78665a0e0c89b49896de7ab0f75183, type: 3}
+  - {fileID: 21300000, guid: e9ac9fda715e5ec45b61e75149715e99, type: 3}
+  - {fileID: 21300000, guid: d89c442bf60b2bc499c1c01388b809ef, type: 3}
+  - {fileID: 21300000, guid: 4472e36b55b9af144a2f3cdfbcf5a2df, type: 3}
+  - {fileID: 21300000, guid: 6a24597b86dc36a4bb301fbd8c9d2df8, type: 3}
+  - {fileID: 21300000, guid: b89a60dbea38ad746802e0a539499805, type: 3}
+  - {fileID: 21300000, guid: 0ff8adeb37604b24bba7dd72e568a50b, type: 3}
+  - {fileID: 21300000, guid: 0904462ce52470e4fb232816a3d9c37d, type: 3}
+  - {fileID: 21300000, guid: 31b32f4c74376bb4caf3a4c2ea55ad7a, type: 3}
+  - {fileID: 21300000, guid: d4bd28ec22af3b64d8c87487eb9702fd, type: 3}
+  - {fileID: 21300000, guid: b6736d3da796aba4c82c97a590930366, type: 3}
+  - {fileID: 21300000, guid: e432b77d16243a845bc0b47c91e62da5, type: 3}
+  - {fileID: 21300000, guid: f18db7ede64350549843bd3a692765ee, type: 3}
+  - {fileID: 21300000, guid: 24ec715e77ad36a45b455d3cb9716b26, type: 3}
+  - {fileID: 21300000, guid: 7a3f4eae199aa59439f7ee5654bc05bc, type: 3}
+  - {fileID: 21300000, guid: c14c22de7acce724abf860c11671e539, type: 3}
+  - {fileID: 21300000, guid: 583851bf64aa4aa4184ff0102f5f4001, type: 3}
+  - {fileID: 21300000, guid: f7e935cf4eb11444f8942d812e62085f, type: 3}
+  - {fileID: 21300000, guid: 560c8bdfc8140bf4cb48dd1c41f1e6a2, type: 3}
+  - {fileID: 21300000, guid: 102a60ffe7429c64f8598b9272793678, type: 3}
+  - {fileID: 21300000, guid: 8f0f13ff50d33b946bbd1bc52d84fa53, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - PhoneSpy_Fondo
+  - Label_Social
+  - Keri_PhoneSpy
+  - Label_Promotions
+  - Credits
+  - Inbox_Primary
+  - Mailbox
+  - Tom_Mail
+  - Hora
+  - Sam_Mail
+  - Notificaciones Texto
+  - Notificaciones Icono
+  - Trash
+  - Paused
+  - Continue
+  - Depot_Mail
+  - Fondo 2
+  - "Dem\xE1s Iconos"
+  - 48 hs
+  - Label_Primary
+  - "Notificaci\xF3n-Le\xEDda"
+  - Ejemplo
+  - "Phone Spy - Le\xEDdo"
+  - CodeField_Fondo
+  - Notificaciones Ventana
+  - "Phone Spy - No Le\xEDdo"
+  - Inbox_Fondo
+  - MinimizarVentana
+  - Error_Fondo
+  - "Notificaci\xF3n-NoLe\xEDda"
+  - Sonido Icono
+  - Success_Fondo
+  - Inicio
+  - Exit
+  - DepotReceive
+  - Wifi
+  - Internet
+  - Texto Recordatorio
+  - Inbox_Promotions
+  - Sam_PhoneSpy
+  - Neighbor_PhoneSpy
+  - Options
+  - MaximizarVentana
+  - Barra Notificaciones
+  - Inbox_PhoneSpy
+  - Bonton Escritorio
+  - Sonido Ventana
+  - "Texto-Notif-Le\xEDda"
+  - "Texto Notificaci\xF3n"
+  - Internet-2
+  - Barra de tareas Base
+  - CerrarVentana
+  m_Tag: Sprite Atlas
+  m_IsVariant: 0
