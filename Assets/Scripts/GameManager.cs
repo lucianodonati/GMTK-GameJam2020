@@ -122,11 +122,11 @@ public class GameManager : MonoBehaviour
     IEnumerator BSODRoutine()
     {
         BSOD.SetActive(true);
-        //audioSource.PlayOneShot(BSOD_Clip, 1);
+        audioSource.PlayOneShot(BSOD_Clip, 1);
         //PlayerPrefs.SetInt("HasCrashed", 1);
         CreateKeyCombinationFiles(filesToCreate);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(timeToQuit);
 
         Application.Quit();
     }
