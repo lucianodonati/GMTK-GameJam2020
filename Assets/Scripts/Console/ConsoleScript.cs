@@ -55,38 +55,49 @@ public class ConsoleScript : MonoBehaviour
     {
         for (int index = 0; index < scriptQuestions.Length; index++)
         {
-            writer.SendMessage(scriptQuestions[index].questionText, true);
-            yield return writer.writeCoroutine;
-
-            writer.SendMessage("Choose an option:", false);
-            yield return writer.writeCoroutine;
-            foreach (var response in scriptQuestions[index].responses)
+            if (scriptQuestions[index].responses.Length == 0)
             {
-                writer.SendMessage(response.responseText+" ["+response.option+']', false);
+                writer.SendMessage(scriptQuestions[index].questionText, false);
                 yield return writer.writeCoroutine;
-                yield return new WaitForSeconds(scriptQuestions[index].delay);
             }
-
-            int chose = -1;
-            do
+            else
             {
-                if (Input.anyKeyDown)
-                {
-                    if (Input.GetKeyDown(KeyCode.Alpha1))
-                        chose = 1;
-                    else if (Input.GetKeyDown(KeyCode.Alpha2))
-                        chose = 2;
-                    else if (Input.GetKeyDown(KeyCode.Alpha3))
-                        chose = 3;
-                }
-                yield return null;
-            } while (chose == -1);
+                writer.SendMessage(scriptQuestions[index].questionText, true);
+                yield return writer.writeCoroutine;
 
-            writer.SendAnswer(scriptQuestions[index].responses[chose-1].responseText);
-            score += scriptQuestions[index].responses[chose-1].value;
-            yield return writer.writeCoroutine;
-            yield return new WaitForSeconds(1f);
-           
+
+                writer.SendMessage("Choose an option:", false);
+                yield return writer.writeCoroutine;
+                foreach (var response in scriptQuestions[index].responses)
+                {
+                    writer.SendMessage(response.responseText + " [" + response.option + ']', false);
+                    yield return writer.writeCoroutine;
+                    yield return new WaitForSeconds(scriptQuestions[index].delay);
+                }
+
+
+                int chose = -1;
+                do
+                {
+                    if (Input.anyKeyDown)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Alpha1))
+                            chose = 1;
+                        else if (Input.GetKeyDown(KeyCode.Alpha2))
+                            chose = 2;
+                        else if (Input.GetKeyDown(KeyCode.Alpha3))
+                            chose = 3;
+                    }
+
+                    yield return null;
+                } while (chose == -1);
+
+                writer.SendAnswer(scriptQuestions[index].responses[chose - 1].responseText);
+                score += scriptQuestions[index].responses[chose - 1].value;
+                yield return writer.writeCoroutine;
+            }
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }
+

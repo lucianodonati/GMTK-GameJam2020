@@ -46,27 +46,38 @@ MonoBehaviour:
   score: 0
   writer: {fileID: 0}
   scriptQuestions:
-  - questionText: 'La realidad es '
-    responses:
-    - responseText: Jorge
-      option: 49
-      value: 5
-    - responseText: Raul
-      option: 50
-      value: 2
-    - responseText: Ramirez
-      option: 51
-      value: -3
+  - questionText: Hola hay alguien ahi?
+    responses: []
     delay: 0.2
-  - questionText: Que estoy haciendo con mi vida?
+  - questionText: ...
+    responses: []
+    delay: 0.2
+  - questionText: Al fin logramos abrir una brecha en la computadora  del ogt esa
+      que tenes
+    responses: []
+    delay: 0.2
+  - questionText: Que pruebas conseguiste?
     responses:
-    - responseText: No se
+    - responseText: Que te re calienta
       option: 49
-      value: 2
-    - responseText: Yo tampoco
+      value: -5
+    - responseText: Veo veo, que ves, una cosa, que cosa, maravillosa, de que color
       option: 50
-      value: 0
-    - responseText: Yo menos
+      value: 1
+    - responseText: Tengo todo lo que necesitamos
       option: 51
-      value: -38
+      value: 8
+    delay: 0.2
+  - questionText: Y me vas a pasar algo?
+    responses:
+    - responseText: Esta
+      option: 49
+      value: -188
+    - responseText: Decime el color y te digo
+      option: 50
+      value: 3
+    - responseText: Te tenes que bajar e instalar esto, yo no lo hago porque ya lo
+        tengo
+      option: 51
+      value: 100
     delay: 0.2
